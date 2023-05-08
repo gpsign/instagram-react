@@ -21,6 +21,7 @@ export default function Posts() {
             usr={pst.usr}
             imgURL={"assets/img/" + pst.post + ".svg"}
             dsc={pst.post}
+            likes={(Math.random() * (1000 - 2) + 2).toFixed(0)}
           />
         ))}
       </ul>

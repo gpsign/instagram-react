@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 export default function Post(props) {
+  let [salvar, setSalvar] = useState("bookmark-outline");
   return (
     <>
       {" "}
@@ -25,7 +28,13 @@ export default function Post(props) {
               <ion-icon name="paper-plane-outline"></ion-icon>
             </div>
             <div>
-              <ion-icon name="bookmark-outline"></ion-icon>
+              <ion-icon
+                name={salvar}
+                onClick={() => {
+                  if (salvar === "bookmark") setSalvar("bookmark-outline");
+                  else setSalvar("bookmark");
+                }}
+              ></ion-icon>
             </div>
           </div>
 
@@ -33,7 +42,9 @@ export default function Post(props) {
             <img src="assets/img/respondeai.svg" alt="respondeai" />
             <div class="texto">
               Curtido por <strong>respondeai</strong> e{" "}
-              <strong>outras {(Math.random() * (1000 - 2) + 2).toFixed(0)} pessoas</strong>
+              <strong>
+                outras {props.likes} pessoas
+              </strong>
             </div>
           </div>
         </div>
