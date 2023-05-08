@@ -5,10 +5,11 @@ export default function Post(props) {
   let [curtido, setCurtido] = useState("");
   let [curtidas, setCurtidas] = useState(Number(props.likes));
   let [filled, setFilled] = useState("heart-outline");
+
   return (
     <>
       {" "}
-      <li class="post">
+      <li data-test="post" class="post">
         <div class="topo">
           <div class="usuario">
             <img src={props.usrURL} alt={props.usr} />
@@ -21,6 +22,7 @@ export default function Post(props) {
 
         <div class="conteudo">
           <img
+            data-test="post-image"
             src={props.imgURL}
             alt={props.dsc}
             onClick={() => {
@@ -38,6 +40,7 @@ export default function Post(props) {
           <div class="acoes">
             <div>
               <ion-icon
+                data-test="like-post"
                 name={filled}
                 class={curtido}
                 onClick={() => {
@@ -59,6 +62,7 @@ export default function Post(props) {
             </div>
             <div>
               <ion-icon
+                data-test="save-post"
                 name={salvar}
                 onClick={() => {
                   if (salvar === "bookmark") setSalvar("bookmark-outline");
@@ -70,7 +74,7 @@ export default function Post(props) {
 
           <div class="curtidas">
             <img src="assets/img/respondeai.svg" alt="respondeai" />
-            <div class="texto">
+            <div data-test="likes-number" class="texto">
               Curtido por <strong>respondeai</strong> e{" "}
               <strong>outras {curtidas} pessoas</strong>
             </div>
