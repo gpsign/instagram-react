@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 export default function User() {
-  let [nome, setNome] = useState("catanacomics");
-  let [foto, setFoto] = useState("assets/img/catanacomics.svg");
+  let [nome, setNome] = useState("gbrl.sign");
+  let [foto, setFoto] = useState("assets/img/gbrl.sign.svg");
   return (
     <>
       <div class="usuario">

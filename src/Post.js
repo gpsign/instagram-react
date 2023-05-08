@@ -2,6 +2,9 @@ import { useState } from "react";
 
 export default function Post(props) {
   let [salvar, setSalvar] = useState("bookmark-outline");
+  let [curtido, setCurtido] = useState("");
+  let [curtidas, setCurtidas] = useState(Number(props.likes));
+  let [filled, setFilled] = useState("heart-outline");
   return (
     <>
       {" "}
@@ -17,13 +20,40 @@ export default function Post(props) {
         </div>
 
         <div class="conteudo">
-          <img src={props.imgURL} alt={props.dsc} />
+          <img
+            src={props.imgURL}
+            alt={props.dsc}
+            onClick={() => {
+              if (!curtido) {
+                setCurtido("curtido");
+                setFilled("heart");
+                let maisUm = curtidas + 1;
+                setCurtidas(maisUm);
+              }
+            }}
+          />
         </div>
 
         <div class="fundo">
           <div class="acoes">
             <div>
-              <ion-icon name="heart-outline"></ion-icon>
+              <ion-icon
+                name={filled}
+                class={curtido}
+                onClick={() => {
+                  if (!curtido) {
+                    setCurtido("curtido");
+                    setFilled("heart");
+                    let maisUm = curtidas + 1;
+                    setCurtidas(maisUm);
+                  } else {
+                    setCurtido("");
+                    setFilled("heart-outline");
+                    let menosUm = curtidas - 1;
+                    setCurtidas(menosUm);
+                  }
+                }}
+              ></ion-icon>
               <ion-icon name="chatbubble-outline"></ion-icon>
               <ion-icon name="paper-plane-outline"></ion-icon>
             </div>
@@ -42,9 +72,7 @@ export default function Post(props) {
             <img src="assets/img/respondeai.svg" alt="respondeai" />
             <div class="texto">
               Curtido por <strong>respondeai</strong> e{" "}
-              <strong>
-                outras {props.likes} pessoas
-              </strong>
+              <strong>outras {curtidas} pessoas</strong>
             </div>
           </div>
         </div>
